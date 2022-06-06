@@ -1,6 +1,7 @@
 package com.example.order;
 
 import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,11 +24,11 @@ public class OrderService {
                 .products(order.getProducts())
                 .status(OrderStatus.PAYMENT_PENDING.toString())
                 .build());
-        streamBridge.send("order-created-out-0", OrderEvent.builder()
+        streamBridge.send("order-created-out-0", MessageBuilder.withPayload(OrderEvent.builder()
                 .orderId(orderCreatedEntity.getId())
                 .eventId(UUID.randomUUID().toString())
                 .eventType(EventType.ORDER_CREATED)
-                .build());
+                .build()).build());
         return new OrderInfo(orderCreatedEntity.getId(), orderCreatedEntity.getStatus());
     }
 

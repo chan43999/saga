@@ -1,3 +1,5 @@
+server:
+  port: 8082
 spring:
   profiles:
     active: local
@@ -5,12 +7,12 @@ spring:
     kubernetes:
       enabled: false
     function:
-      definition: order-created;order
+      definition: order;
     stream:
       kafka:
         streams:
           binder:
-            application-id: 1111
+            application-id: 2222
             configuration:
               default:
                 key:
@@ -20,8 +22,6 @@ spring:
             auto-create-topics: true
 
       bindings:
-        order-created-out-0:
-          destination: order
         order-in-0:
           destination: order
   data:
