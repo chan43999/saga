@@ -13,9 +13,9 @@ public class BillingEventHandler {
 
 
     @Bean
-    public Consumer<KStream<Object,String>> order() {
+    public Consumer<KStream<Object,OrderEvent>> order() {
 
-        return input -> input.foreach((k,v) -> log.info(v));
+        return input -> input.foreach((k,v) -> log.info(v.getOrderId()));
     }
 
 }
