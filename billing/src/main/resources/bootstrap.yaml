@@ -24,6 +24,8 @@ spring:
       bindings:
         order-in-0:
           destination: order
+        order-out-0:
+          destination: bill
   data:
     mongodb:
       host: localhost

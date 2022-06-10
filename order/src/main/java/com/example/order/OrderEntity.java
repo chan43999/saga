@@ -19,5 +19,7 @@ public class OrderEntity {
 
     private List<String> products;
 
+    private String customerName;
+
     private Integer totalPrice;
 }

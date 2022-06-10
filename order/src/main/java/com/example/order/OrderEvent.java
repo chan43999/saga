@@ -17,4 +17,6 @@ public class OrderEvent {
 
     private String orderId;
 
+    private Integer amount;
+
 }
